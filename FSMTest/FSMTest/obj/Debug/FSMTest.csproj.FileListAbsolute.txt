@@ -1,0 +1,6 @@
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\bin\Debug\FSMTest.exe.config
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\bin\Debug\FSMTest.exe
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\bin\Debug\FSMTest.pdb
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\obj\Debug\FSMTest.exe
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\obj\Debug\FSMTest.pdb
+D:\MyStuff\AI\FSM\FSMTest\FSMTest\obj\Debug\FSMTest.csprojResolveAssemblyReference.cache
