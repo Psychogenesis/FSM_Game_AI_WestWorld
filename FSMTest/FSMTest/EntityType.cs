@@ -5,7 +5,10 @@ namespace FSMTest
     public enum EntityNameType
     {
         [Display(Name = "Miner Bob")]
-        Miner
+        Miner,
+
+        [Display(Name = "Elsa")]
+        Wife
     }
 
     public class EntityType
@@ -16,6 +19,8 @@ namespace FSMTest
             {
                 case EntityNameType.Miner:
                     return "Miner Bob";
+                case EntityNameType.Wife:
+                    return "Elsa";
                 default:
                     return "UNKNOWN!";
             }

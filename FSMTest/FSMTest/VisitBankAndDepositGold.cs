@@ -31,7 +31,7 @@ namespace FSMTest
             {
                 Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Woohoo!Rich enough for now.Back home to mah li'l lady.");
                 miner.ChangeState(GoHomeAndSleepTilRested.Instance);
-            }                
+            }
             else
                 miner.ChangeState(EnterMineAndDigForNugget.Instance);
         }
