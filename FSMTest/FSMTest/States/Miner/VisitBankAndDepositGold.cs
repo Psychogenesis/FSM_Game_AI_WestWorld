@@ -29,7 +29,7 @@ namespace FSMTest
                 miner.ChangeState(GoHomeAndSleepTilRested.Instance);
             }
             else
-                miner.ChangeState(EnterMineAndDigForNugget.Instance);
+                miner.ReverttoPreviousState();
         }
 
         public override void Exit(Miner miner)

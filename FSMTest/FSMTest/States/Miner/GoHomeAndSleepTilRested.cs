@@ -28,7 +28,7 @@ namespace FSMTest
             else
             {
                 Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": What a God-darn fantastic nap! Time to find more gold.");
-                miner.ChangeState(EnterMineAndDigForNugget.Instance);
+                miner.ReverttoPreviousState();
             }
         }
 

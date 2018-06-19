@@ -24,7 +24,7 @@ namespace FSMTest
         {
             wife.Releafed();
             Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Ahhhhhh! Sweet relief!");
-            wife.ChangeState(DoHousework.Instance);
+            wife.ReverttoPreviousState();
         }
 
         public override void Exit(Wife wife)

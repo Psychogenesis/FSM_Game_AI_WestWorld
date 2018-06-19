@@ -33,10 +33,12 @@
             m_pCurrentState = pNewState;
             m_pCurrentState?.Enter(m_pOwner);
         }
-        public void RevertToPreviousState(State<T> prevState)
+        public void RevertToPreviousState()
         {
-            if(m_pCurrentState != null)
-                m_pCurrentState = prevState;
+            if(m_pPreviousState != null)
+                m_pCurrentState = m_pPreviousState;
+            else throw new System.ArgumentException("Parameter cannot be null", "original");
+
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FSMTest
             {
                 miner.BuyDrinksandWhiskey();
                 Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": That's mighty fine sippin liquor.");
-                miner.ChangeState(EnterMineAndDigForNugget.Instance);
+                miner.ReverttoPreviousState();
             }
             else
                 Console.WriteLine("WTF! THIS IS RESTRICTED AREA, NI@GA!");

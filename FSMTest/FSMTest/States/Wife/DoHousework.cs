@@ -31,7 +31,8 @@ namespace FSMTest
                 Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Oh my! My belly rumbling..");
                 wife.ChangeState(VisitBathroom.Instance);
             }
-            
+            if(wife.isInNeed())
+                Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Feeling the need..");
         }
 
         public override void Exit(Wife wife)

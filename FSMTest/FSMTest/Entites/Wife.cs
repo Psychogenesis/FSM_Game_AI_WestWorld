@@ -29,6 +29,10 @@ namespace FSMTest
         {
             FSM.ChangeState(sm);
         }
+        public void ReverttoPreviousState()
+        {
+            FSM.RevertToPreviousState();
+        }
         public override void Update()
         {
             Releaf++;
