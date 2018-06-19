@@ -7,12 +7,17 @@
         private State<T> m_pPreviousState;
         private State<T> m_pGlobalState;
 
-        public void Awake()
+        public StateMachine(T owner)
         {
+            m_pOwner = owner;
             m_pCurrentState = null;
             m_pPreviousState = null;
             m_pGlobalState = null;
         }
+
+        public void SetCurrentState(State<T> s) { m_pCurrentState = s; }
+        public void SetPreviousState(State<T> s) { m_pPreviousState = s; }
+        public void SetGlobalState(State<T> s) { m_pGlobalState = s; }
 
         public void Initialise(T owner, State<T> InitialState)
         {
@@ -38,7 +43,6 @@
             if(m_pPreviousState != null)
                 m_pCurrentState = m_pPreviousState;
             else throw new System.ArgumentException("Parameter cannot be null", "original");
-
         }
     }
 }

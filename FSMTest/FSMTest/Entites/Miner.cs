@@ -26,12 +26,8 @@ namespace FSMTest
             Thirst = 0;
             Fatigue = 0;
             m_Location = Location.Shack;
-        }
-        public void Awake()
-        {
-            Console.WriteLine("Miner is here..");
-            FSM = new StateMachine<Miner>();
-            FSM.Initialise(this, GoHomeAndSleepTilRested.Instance);
+            FSM = new StateMachine<Miner>(this);
+            FSM.SetCurrentState(GoHomeAndSleepTilRested.Instance);
         }
 
         public void ChangeState(State<Miner> sm)

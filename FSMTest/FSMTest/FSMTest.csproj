@@ -45,18 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entites\BaseEntity.cs" />
-    <Compile Include="States\Wife\DoHousework.cs" />
-    <Compile Include="States\Miner\EnterMineAndDigForNugget.cs" />
+    <Compile Include="States\MinerOwnedStates.cs" />
+    <Compile Include="States\WifeOwnedStates.cs" />
     <Compile Include="Entites\EntityType.cs" />
-    <Compile Include="States\Miner\GoHomeAndSleepTilRested.cs" />
     <Compile Include="Entites\Miner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="States\Miner\QuenchThirst.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="States\StateMachine.cs" />
-    <Compile Include="States\Miner\VisitBankAndDepositGold.cs" />
-    <Compile Include="States\Wife\VisitBathroom.cs" />
     <Compile Include="Entites\Wife.cs" />
   </ItemGroup>
   <ItemGroup>

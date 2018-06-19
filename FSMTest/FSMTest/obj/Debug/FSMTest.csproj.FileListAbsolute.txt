@@ -1,6 +1,6 @@
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\bin\Debug\FSMTest.exe.config
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\bin\Debug\FSMTest.exe
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\bin\Debug\FSMTest.pdb
-D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.csprojResolveAssemblyReference.cache
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.exe
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.pdb
+D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.csprojResolveAssemblyReference.cache

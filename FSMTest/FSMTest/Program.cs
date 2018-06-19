@@ -9,8 +9,7 @@ namespace FSMTest
         {
             var miner = new Miner((int) EntityNameType.Miner);
             var wife = new Wife((int) EntityNameType.Wife);
-            miner.Awake();
-            wife.Awake();
+
             for (int i = 0; i < 20; i++)
             {
                 miner.Update();
