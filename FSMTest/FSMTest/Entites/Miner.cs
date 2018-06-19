@@ -12,13 +12,13 @@ namespace FSMTest
 
     public class Miner : BaseEntity
     {
-        public Location m_Location { get; set; }
+        private StateMachine<Miner> FSM;
         private int GoldCarried;
-        public int MoneyInBank { get; set; }
         private int Thirst;
         private int Fatigue;
-        private StateMachine<Miner> FSM;
-
+        public Location m_Location { get; set; }
+        public int MoneyInBank { get; set; }
+               
         public Miner (int ID) : base(ID)
         {
             GoldCarried = 0;
@@ -29,7 +29,7 @@ namespace FSMTest
         }
         public void Awake()
         {
-            Console.WriteLine("Start.");
+            Console.WriteLine("Miner is here..");
             FSM = new StateMachine<Miner>();
             FSM.Initialise(this, GoHomeAndSleepTilRested.Instance);
         }

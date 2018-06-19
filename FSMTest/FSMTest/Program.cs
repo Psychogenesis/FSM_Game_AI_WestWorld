@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace FSMTest
@@ -12,10 +8,13 @@ namespace FSMTest
         static void Main(string[] args)
         {
             var miner = new Miner((int) EntityNameType.Miner);
+            var wife = new Wife((int) EntityNameType.Wife);
             miner.Awake();
+            wife.Awake();
             for (int i = 0; i < 20; i++)
             {
                 miner.Update();
+                wife.Update();
                 Thread.Sleep(2500);
             }
             Console.WriteLine("GAME OVER!");
