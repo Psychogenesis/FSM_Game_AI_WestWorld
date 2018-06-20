@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrudeTimer.cs" />
     <Compile Include="Entites\BaseEntity.cs" />
+    <Compile Include="EntityManager.cs" />
     <Compile Include="MessageDispatcher.cs" />
     <Compile Include="States\MinerOwnedStates.cs" />
     <Compile Include="States\WifeOwnedStates.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="States\State.cs" />
     <Compile Include="States\StateMachine.cs" />
     <Compile Include="Entites\Wife.cs" />
+    <Compile Include="Telegram.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

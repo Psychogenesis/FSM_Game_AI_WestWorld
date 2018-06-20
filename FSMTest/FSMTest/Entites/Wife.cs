@@ -11,10 +11,12 @@ namespace FSMTest
     class Wife : BaseEntity
     {
         private StateMachine<Wife> FSM;
+        private bool isCooking;
         public Locations m_pLocation;
         public Wife(int ID) : base(ID)
         {
             m_pLocation = Locations.house;
+            isCooking = false;
             FSM = new StateMachine<Wife>(this);
             FSM.SetCurrentState(DoHousework.Instance);
             FSM.SetGlobalState(WifeGlobalState.Instance);
@@ -33,5 +35,12 @@ namespace FSMTest
         {
             FSM.Update();
         }
+
+        public override bool HandleMessage(Telegram msg)
+        {
+            return FSM.HandleMessage(msg);
+        }
+        public bool Cooking() { return isCooking; }
+        public void SetCooking(bool val) { isCooking = val; }
     }
 }

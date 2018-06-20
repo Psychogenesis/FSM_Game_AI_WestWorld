@@ -21,6 +21,19 @@ namespace FSMTest
         }
 
         public override void Exit(Wife wife){}
+
+        public override bool OnMessage(Wife wife, Telegram msg)
+        {
+            switch(msg.Msg)
+            {
+                case (int)msg_type.Msg_HiHoneyImHome:
+                    Console.WriteLine("Message handled by " + EntityManager.Instance.GetEntityFromID(wife.ID) + "at time: " + CrudeTimer.Instance.GetCurrentTime());
+                    Console.WriteLine(EntityManager.Instance.GetEntityFromID(wife.ID) + ": Hi honey. Let me make you some of mah fine country stew");
+                    wife.GetFSM().ChangeState(CookStew.Instance);
+                    return true;
+            }
+            return false;
+        }
     }
     class DoHousework : State<Wife>
     {
@@ -65,6 +78,11 @@ namespace FSMTest
         {
             Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Thats enough cleanin' for now.");
         }
+
+        public override bool OnMessage(Wife wife, Telegram msg)
+        {
+            return false;
+        }
     }
 
     class VisitBathroom : State<Wife>
@@ -92,6 +110,10 @@ namespace FSMTest
         {
             Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Leavin' the john");
         }
+        public override bool OnMessage(Wife wife, Telegram msg)
+        {
+            return false;
+        }
     }
 
     class CookStew : State<Wife>
@@ -102,15 +124,35 @@ namespace FSMTest
         static CookStew() { Instance = new CookStew(); }
         public override void Enter(Wife wife)
         {
-            throw new NotImplementedException();
+            if(!wife.Cooking())
+            {
+                Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Putting the stew in the oven");
+                MessageDispatcher.Instance.DispatchMessage(1.5, wife.ID, wife.ID, (int)msg_type.Msg_StewReady, MessageDispatcher.NO_ADDITIONAL_INFO);
+                wife.SetCooking(true);
+            }
         }
         public override void Execute(Wife wife)
         {
-
+            Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": : Fussin' over food.");
         }
         public override void Exit(Wife wife)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": : Puttin' the stew on the table.");
+        }
+        public override bool OnMessage(Wife wife, Telegram msg)
+        {
+            switch(msg.Msg)
+            {
+                case (int)msg_type.Msg_StewReady:
+                    Console.WriteLine("Message received by " + EntityType.GetEntityName(wife.ID) + "at time " + CrudeTimer.Instance.GetCurrentTime());
+                    Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": StewReady! Lets eat.");
+                    MessageDispatcher.Instance.DispatchMessage(MessageDispatcher.SEND_MSG_IMMEDIATELY, wife.ID, (int)EntityNameType.Miner, (int)msg_type.Msg_StewReady, MessageDispatcher.NO_ADDITIONAL_INFO);
+                    wife.SetCooking(false);
+                    wife.GetFSM().ChangeState(DoHousework.Instance);
+                    return true;
+
+            }
+            return false;
         }
     }
 }

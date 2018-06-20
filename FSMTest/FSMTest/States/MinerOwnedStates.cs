@@ -40,6 +40,20 @@ namespace FSMTest
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Leaving the house.");
         }
+
+        public override bool OnMessage(Miner miner, Telegram msg)
+        {
+            switch(msg.Msg)
+            {
+                case (int)msg_type.Msg_StewReady:
+                    Console.WriteLine("Message handled by " + EntityManager.Instance.GetEntityFromID(miner.ID) + "at time: " + CrudeTimer.Instance.GetCurrentTime());
+                    Console.WriteLine(EntityManager.Instance.GetEntityFromID(miner.ID) + ": Okay Hun, ahm a comin'!");
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
     }
 
     class EnterMineAndDigForNugget : State<Miner>
@@ -75,6 +89,11 @@ namespace FSMTest
         public override void Exit(Miner miner)
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Ah'm leavin' the gold mine with mah pockets full o' sweet gold.");
+        }
+
+        public override bool OnMessage(Miner miner, Telegram msg)
+            {
+            return false;
         }
     }
 
@@ -112,6 +131,11 @@ namespace FSMTest
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Leaving the saloon, feelin' good.");
         }
+
+        public override bool OnMessage(Miner miner, Telegram msg)
+            {
+            return false;
+        }
     }
 
     class VisitBankAndDepositGold : State<Miner>
@@ -147,6 +171,34 @@ namespace FSMTest
         public override void Exit(Miner miner)
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Leavin' the bank.");
+            miner.ReverttoPreviousState();
+        }
+
+        public override bool OnMessage(Miner miner, Telegram msg)
+            {
+            return false;
+        }
+    }
+
+    class EatStew : State<Miner>
+    {
+        public override void Enter(Miner miner)
+        {
+            Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Smells Reaaal goood Elsa!");
+        }
+        public override void Execute(Miner miner)
+        {
+            Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Tastes real good too!");
+        }
+
+        public override void Exit(Miner miner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool OnMessage(Miner miner, Telegram t)
+        {
+            return false;
         }
     }
 }

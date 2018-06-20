@@ -31,6 +31,15 @@
             m_pCurrentState?.Execute(m_pOwner);
         }
 
+        public bool HandleMessage(Telegram msg)
+        {
+            if (m_pCurrentState != null && m_pCurrentState.OnMessage(m_pOwner, msg))
+                return true;
+            if (m_pGlobalState != null && m_pGlobalState.OnMessage(m_pOwner, msg))
+                return true;
+            return false;
+        }
+
         public void ChangeState(State<T> pNewState)
         {
             m_pPreviousState = m_pCurrentState;

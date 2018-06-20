@@ -22,5 +22,7 @@
         }
 
         public abstract void Update();
+
+        public abstract bool HandleMessage(Telegram msg);
     }
 }

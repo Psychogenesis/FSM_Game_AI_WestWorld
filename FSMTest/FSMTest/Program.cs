@@ -17,6 +17,9 @@ namespace FSMTest
             {
                 miner.Update();
                 wife.Update();
+
+                MessageDispatcher.Instance.DispatchDelayedMessage();
+
                 Thread.Sleep(1300);
             }
             Console.WriteLine("GAME OVER!");

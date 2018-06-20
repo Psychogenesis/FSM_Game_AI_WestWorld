@@ -39,6 +39,11 @@ namespace FSMTest
             FSM.RevertToPreviousState();
         }
 
+        public override bool HandleMessage(Telegram msg)
+        {
+            return FSM.HandleMessage(msg);
+        }
+
         public override void Update()
         {
             Thirst++;
@@ -50,7 +55,7 @@ namespace FSMTest
         public void DecreaseFatigue() => Fatigue--;
         public bool isPocketsFull() => GoldCarried >= 3 ? true : false;
         public bool isThirsty() => Thirst >= 5 ? true : false;
-        public bool isWealthy() => MoneyInBank >= 7 ? true : false;
+        public bool isWealthy() => MoneyInBank >= 5 ? true : false;
         public bool isFatigued() => Fatigue >= 5 ? true : false;        
         public void DepositGoldInBank()
         {

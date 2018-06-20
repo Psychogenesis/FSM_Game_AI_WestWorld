@@ -4,3 +4,10 @@ D:\MyStuff\AI_Repo\FSMTest\FSMTest\bin\Debug\FSMTest.pdb
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.exe
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.pdb
 D:\MyStuff\AI_Repo\FSMTest\FSMTest\obj\Debug\FSMTest.csprojResolveAssemblyReference.cache
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\obj\Debug\FSMTest.csprojAssemblyReference.cache
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\obj\Debug\FSMTest.csproj.CoreCompileInputs.cache
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\obj\Debug\FSMTest.exe
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\obj\Debug\FSMTest.pdb
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\bin\Debug\FSMTest.exe.config
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\bin\Debug\FSMTest.exe
+D:\Programs\AI_Programming\FSM_Game_AI_WestWorld\FSMTest\FSMTest\bin\Debug\FSMTest.pdb

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FSMTest
 {
@@ -26,11 +27,12 @@ namespace FSMTest
     }
     public class Telegram
     {
-        int Sender;
-        int Reciever;
-        int Msg;
-        double DispatchTime;
-        string ExtraInfo;
+        public int Sender;
+        public int Reciever;
+        public int Msg;
+        public double DispatchTime;
+        public object ExtraInfo;
+
         public Telegram()
         {
             Sender = -1;
@@ -38,13 +40,42 @@ namespace FSMTest
             DispatchTime = -1;
             Msg = -1;
         }
-        public Telegram (double time, int sender, int reciever, int msg, string info)
+
+        public Telegram (double time, int sender, int reciever, int msg, object info)
         {
             DispatchTime = time;
             Sender = sender;
             Reciever = reciever;
             Msg = msg;
             ExtraInfo = info;
+        }
+
+        public const double SMALLESTDELAY = 0.25;
+
+        public static bool operator==(Telegram t1, Telegram t2)
+        {
+            return (Math.Abs(t1.DispatchTime - t2.DispatchTime) < SMALLESTDELAY) &&
+                    (t1.Sender == t2.Sender) &&
+                    (t1.Reciever == t2.Reciever) &&
+                    (t1.Msg == t2.Msg);
+        }
+        public static bool operator<(Telegram t1, Telegram t2)
+        {
+            if (t1 == t2)
+                return false;
+            else
+                return (t1.DispatchTime < t2.DispatchTime);
+        }
+        public static bool operator>(Telegram t1, Telegram t2)
+        {
+            if (t1 == t2)
+                return false;
+            else
+                return (t1.DispatchTime > t2.DispatchTime);
+        }
+        public static bool operator!=(Telegram t1, Telegram t2)
+        {
+            return true;
         }
     }
 }
