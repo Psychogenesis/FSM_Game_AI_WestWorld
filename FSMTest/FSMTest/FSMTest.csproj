@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entites\BaseEntity.cs" />
+    <Compile Include="MessageDispatcher.cs" />
     <Compile Include="States\MinerOwnedStates.cs" />
     <Compile Include="States\WifeOwnedStates.cs" />
     <Compile Include="Entites\EntityType.cs" />

@@ -17,7 +17,7 @@ namespace FSMTest
         public override void Execute(Wife wife)
         {
             if(random.Next(1,10) <= 1)
-            wife.GetFSM().ChangeState(VisitBathroom.Instance);
+                wife.GetFSM().ChangeState(VisitBathroom.Instance);
         }
 
         public override void Exit(Wife wife){}
@@ -91,6 +91,26 @@ namespace FSMTest
         public override void Exit(Wife wife)
         {
             Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Leavin' the john");
+        }
+    }
+
+    class CookStew : State<Wife>
+    {
+        Random random = new Random();
+
+        public static CookStew Instance { get; }
+        static CookStew() { Instance = new CookStew(); }
+        public override void Enter(Wife wife)
+        {
+            throw new NotImplementedException();
+        }
+        public override void Execute(Wife wife)
+        {
+
+        }
+        public override void Exit(Wife wife)
+        {
+            throw new NotImplementedException();
         }
     }
 }

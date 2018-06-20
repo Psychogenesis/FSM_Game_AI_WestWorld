@@ -10,11 +10,14 @@ namespace FSMTest
             var miner = new Miner((int) EntityNameType.Miner);
             var wife = new Wife((int) EntityNameType.Wife);
 
-            for (int i = 0; i < 20; i++)
+            EntityManager.Instance.RegisterEntity(miner);
+            EntityManager.Instance.RegisterEntity(wife);
+
+            for (int i = 0; i < 30; i++)
             {
                 miner.Update();
                 wife.Update();
-                Thread.Sleep(2500);
+                Thread.Sleep(1300);
             }
             Console.WriteLine("GAME OVER!");
             Console.Read();
