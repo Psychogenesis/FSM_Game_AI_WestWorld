@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrudeTimer.cs" />
+    <Compile Include="Telegram\CrudeTimer.cs" />
     <Compile Include="Entites\BaseEntity.cs" />
-    <Compile Include="EntityManager.cs" />
-    <Compile Include="MessageDispatcher.cs" />
+    <Compile Include="Entites\EntityManager.cs" />
+    <Compile Include="Telegram\MessageDispatcher.cs" />
     <Compile Include="States\MinerOwnedStates.cs" />
     <Compile Include="States\WifeOwnedStates.cs" />
     <Compile Include="Entites\EntityType.cs" />
@@ -57,7 +57,7 @@
     <Compile Include="States\State.cs" />
     <Compile Include="States\StateMachine.cs" />
     <Compile Include="Entites\Wife.cs" />
-    <Compile Include="Telegram.cs" />
+    <Compile Include="Telegram\Telegram.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

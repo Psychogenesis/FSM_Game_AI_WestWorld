@@ -26,11 +26,13 @@ namespace FSMTest
         {
             switch(msg.Msg)
             {
-                case (int)msg_type.Msg_HiHoneyImHome:
-                    Console.WriteLine("Message handled by " + EntityManager.Instance.GetEntityFromID(wife.ID) + "at time: " + CrudeTimer.Instance.GetCurrentTime());
-                    Console.WriteLine(EntityManager.Instance.GetEntityFromID(wife.ID) + ": Hi honey. Let me make you some of mah fine country stew");
-                    wife.GetFSM().ChangeState(CookStew.Instance);
-                    return true;
+                case (int)msg_type.MSG_HIHONEYIMHOME:
+                    {
+                        Console.WriteLine("Message handled by " + EntityType.GetEntityName(wife.ID) + " at time: " + CrudeTimer.Instance.GetCurrentTime());
+                        Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Hi honey. Let me make you some of mah fine country stew");
+                        wife.GetFSM().ChangeState(CookStew.Instance);
+                        return true;
+                    }    
             }
             return false;
         }
@@ -127,7 +129,7 @@ namespace FSMTest
             if(!wife.Cooking())
             {
                 Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": Putting the stew in the oven");
-                MessageDispatcher.Instance.DispatchMessage(1.5, wife.ID, wife.ID, (int)msg_type.Msg_StewReady, MessageDispatcher.NO_ADDITIONAL_INFO);
+                MessageDispatcher.Instance.DispatchMessage(1.5, wife.ID, wife.ID, msg_type.MSG_STEWREADY, MessageDispatcher.NO_ADDITIONAL_INFO);
                 wife.SetCooking(true);
             }
         }
@@ -143,10 +145,10 @@ namespace FSMTest
         {
             switch(msg.Msg)
             {
-                case (int)msg_type.Msg_StewReady:
+                case msg_type.MSG_STEWREADY:
                     Console.WriteLine("Message received by " + EntityType.GetEntityName(wife.ID) + "at time " + CrudeTimer.Instance.GetCurrentTime());
                     Console.WriteLine(EntityType.GetEntityName(wife.ID) + ": StewReady! Lets eat.");
-                    MessageDispatcher.Instance.DispatchMessage(MessageDispatcher.SEND_MSG_IMMEDIATELY, wife.ID, (int)EntityNameType.Miner, (int)msg_type.Msg_StewReady, MessageDispatcher.NO_ADDITIONAL_INFO);
+                    MessageDispatcher.Instance.DispatchMessage(MessageDispatcher.SEND_MSG_IMMEDIATELY, wife.ID, (int)EntityNameType.MINER, msg_type.MSG_STEWREADY, MessageDispatcher.NO_ADDITIONAL_INFO);
                     wife.SetCooking(false);
                     wife.GetFSM().ChangeState(DoHousework.Instance);
                     return true;

@@ -7,8 +7,8 @@ namespace FSMTest
     {
         static void Main(string[] args)
         {
-            var miner = new Miner((int) EntityNameType.Miner);
-            var wife = new Wife((int) EntityNameType.Wife);
+            var miner = new Miner((int) EntityNameType.MINER);
+            var wife = new Wife((int) EntityNameType.WIFE);
 
             EntityManager.Instance.RegisterEntity(miner);
             EntityManager.Instance.RegisterEntity(wife);

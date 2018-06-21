@@ -13,12 +13,15 @@ namespace FSMTest
         {
             Instance = new GoHomeAndSleepTilRested();
         }
+
         public override void Enter(Miner miner)
         {
             if (miner.m_Location != Location.Shack)
             {
                 Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Walkin' home.");
                 miner.m_Location = Location.Shack;
+
+                MessageDispatcher.Instance.DispatchMessage(MessageDispatcher.SEND_MSG_IMMEDIATELY, miner.ID, (int)EntityNameType.WIFE, msg_type.MSG_HIHONEYIMHOME, MessageDispatcher.NO_ADDITIONAL_INFO);
             }
         }
 
@@ -45,9 +48,10 @@ namespace FSMTest
         {
             switch(msg.Msg)
             {
-                case (int)msg_type.Msg_StewReady:
+                case msg_type.MSG_STEWREADY:
                     Console.WriteLine("Message handled by " + EntityManager.Instance.GetEntityFromID(miner.ID) + "at time: " + CrudeTimer.Instance.GetCurrentTime());
                     Console.WriteLine(EntityManager.Instance.GetEntityFromID(miner.ID) + ": Okay Hun, ahm a comin'!");
+                    miner.ChangeState(EatStew.Instance);
                     return true;
 
                 default:
@@ -92,7 +96,7 @@ namespace FSMTest
         }
 
         public override bool OnMessage(Miner miner, Telegram msg)
-            {
+        {
             return false;
         }
     }
@@ -161,7 +165,7 @@ namespace FSMTest
 
             if (miner.isWealthy())
             {
-                Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Woohoo!Rich enough for now.Back home to mah li'l lady.");
+                Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Woohoo! Rich enough for now.Back home to mah li'l lady.");
                 miner.ChangeState(GoHomeAndSleepTilRested.Instance);
             }
             else
@@ -175,13 +179,18 @@ namespace FSMTest
         }
 
         public override bool OnMessage(Miner miner, Telegram msg)
-            {
+        {
             return false;
         }
     }
 
     class EatStew : State<Miner>
     {
+        public static EatStew Instance { get; }
+        static EatStew()
+        {
+            Instance = new EatStew();
+        }
         public override void Enter(Miner miner)
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Smells Reaaal goood Elsa!");
@@ -189,11 +198,12 @@ namespace FSMTest
         public override void Execute(Miner miner)
         {
             Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Tastes real good too!");
+            miner.ReverttoPreviousState();
         }
 
         public override void Exit(Miner miner)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(EntityType.GetEntityName(miner.ID) + ": Thankya li'lle lady. Ah better get back to whatever ah wuz doin'.");
         }
 
         public override bool OnMessage(Miner miner, Telegram t)

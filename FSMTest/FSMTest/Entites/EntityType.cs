@@ -4,11 +4,14 @@ namespace FSMTest
 {
     public enum EntityNameType
     {
+        [Display(Name = "UNKNOWN!")]
+        UNKNOWN,
+
         [Display(Name = "Miner Bob")]
-        Miner,
+        MINER,
 
         [Display(Name = "Elsa")]
-        Wife
+        WIFE
     }
 
     public class EntityType
@@ -17,12 +20,14 @@ namespace FSMTest
         {
             switch((EntityNameType) name)
             {
-                case EntityNameType.Miner:
+                case EntityNameType.UNKNOWN:
+                    return "UNKNOWN!";
+                case EntityNameType.MINER:
                     return "Miner Bob";
-                case EntityNameType.Wife:
+                case EntityNameType.WIFE:
                     return "Elsa";
                 default:
-                    return "UNKNOWN!";
+                    return "ERROR!ERROR!ERROR!";
             }
         }
     }

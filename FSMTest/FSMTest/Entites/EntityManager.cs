@@ -10,6 +10,11 @@ namespace FSMTest
         {
             Instance = new EntityManager();
         }
+        public void RegisterEntity(BaseEntity entity)
+        {
+            EntityMap.Add(entity.ID, entity);
+        }
+
         public BaseEntity GetEntityFromID(int ID)
         {
             BaseEntity baseEntity = null;
@@ -19,14 +24,10 @@ namespace FSMTest
                 {
                     baseEntity = item.Value;
                 }                   
-                else baseEntity = null;
             }
             return baseEntity;
         }
-        public void RegisterEntity(BaseEntity entity)
-        {
-            EntityMap.Add(entity.ID, entity);
-        }
+        
         public void RemoveEntity(BaseEntity entity)
         {
             EntityMap.Remove(entity.ID);
